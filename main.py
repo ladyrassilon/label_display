@@ -20,7 +20,7 @@ def display_message(message):
     position_x = 5
     
     less_x = max_params_width - position_x
-    max_line_length = int(less_x/text_height)
+    max_line_length = less_x/text_height
     
     lines = []
     i = 0
