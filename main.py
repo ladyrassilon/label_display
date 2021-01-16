@@ -2,10 +2,9 @@ from microbit import *
 # import bluetooth
 import inkybit
 
-max_params_width = 250
-max_params_height = 122
-
 def display_message(message):
+    max_params_width = 250
+    max_params_height = 122
     border_thickness = 10
     inkybit.draw_rectangle(0, 0, max_params_width, border_thickness, color=inkybit.ACCENT, filled=True)
     inkybit.draw_rectangle(0, border_thickness, max_params_width, max_params_height - 2*border_thickness, color=inkybit.BLACK, filled=True)
@@ -20,7 +19,8 @@ def display_message(message):
     position_y = border_thickness + line_spacing
     position_x = 5
     
-    max_line_length = int((max_params_width - position_x) / text_height)
+    less_x = max_params_width - position_x
+    max_line_length = int(less_x/text_height)
     
     lines = []
     i = 0
@@ -38,7 +38,7 @@ def display_message(message):
     last_line = " ".join(temp_line_list)
     lines.append(last_line)
     
-    for idx, line in enumerate(lines):
+    for line in lines:
         inkybit.write(line.upper(), position_x, position_y, color=inkybit.WHITE, text_size=text_size)
         position_y += text_height + line_spacing
     
